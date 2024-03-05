@@ -14,12 +14,17 @@ import numpy as n
 # Brain should be defined by default
 brain=Brain()
 
+arena = 
 brain.screen.print("Hello V5")
-class Middle:
-    
+class MiddleBlock:
+    def __init__(pos,parts):
+        self.posX = posX
+        self.posY = posY
+        self.parts = parts
+        self.part1 = [[0,0,0,0],[0,0,0,0],[0,0,1,1],[0,0,1,1]]
+        self.part2 = [[0,0,0,0],[0,0,0,0],[1,1,0,0],[1,1,0,0]]
+        self.part3 = [[0,0,1,1],[0,0,1,1],[0,0,0,0],[0,0,0,0]]
+        self.part4 = [[1,1,0,0],[1,1,0,0],[0,0,0,0],[0,0,0,0]]
 
-def main(){
-
-}
-
+Middle1 = MiddleBlock(5,7,1)s
 
