@@ -13,18 +13,37 @@ import numpy as n
 
 # Brain should be defined by default
 brain=Brain()
-
-arena = 
+LeftGoalR = []
+RightGoalR = []
+LeftCupR = []
+RightCupR = []
+LeftGoalB = []
+RightGoalB = []
+LeftCupB = []
+RightCupB = []
+MiddleBlock = []
 brain.screen.print("Hello V5")
-class MiddleBlock:
-    def __init__(pos,parts):
-        self.posX = posX
-        self.posY = posY
-        self.parts = parts
-        self.part1 = [[0,0,0,0],[0,0,0,0],[0,0,1,1],[0,0,1,1]]
-        self.part2 = [[0,0,0,0],[0,0,0,0],[1,1,0,0],[1,1,0,0]]
-        self.part3 = [[0,0,1,1],[0,0,1,1],[0,0,0,0],[0,0,0,0]]
-        self.part4 = [[1,1,0,0],[1,1,0,0],[0,0,0,0],[0,0,0,0]]
+class Circle:
+    def __init__(pos,relatives):
+        self.pos = pos
+        self.width = diameter
+        #the relatives don't do anything rn, but the goal is to use them to speed up the computing process in the future
+        #self.rel = relatives.push(MiddleBlock)
+    def distanceTo(obj):
+        pos1 = obj.pos
+        pos2 = self.pos
+        dist = math.sqrt(((pos1[0]-pos2[0])*(pos1[0]-pos2[0]))+((pos1[1]-pos2[1])*(pos1[1]-pos2[1])))
+        return dist
+class Square:
+    def __init__(pos,side):
+        self.pos = pos
+        self.greatestSize = math.sqrt(side*2)
+        self.smallestSize = side
 
-Middle1 = MiddleBlock(5,7,1)s
+LeftGoalR = Circle([x,y],[RightGoalR,LeftCupR])
+RightGoalR = Circle([x,y],[LeftGoal,RightCupR])
+RightCupR = Circle([x,y],[RightGoalR,RightCupB])
+LeftCupR = Circle([x,y],[LeftGoalR,LeftCupB])
+
+
 
