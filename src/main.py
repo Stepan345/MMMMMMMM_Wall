@@ -33,7 +33,7 @@ class Circle:
     def __init__(self,pos,color) -> None:
         self.pos = pos
         self.col = color
-        self.width = 0 #tbd
+        self.width = 8 #inches
     def distanceTo(self,obj):
         pos1 = obj.pos
         pos2 = self.pos
@@ -43,7 +43,7 @@ class Square:
     def __init__(self,pos,side) -> None:
         self.pos = pos
         self.greatestSize = math.sqrt(side*2)
-        self.smallestSize = side
+        self.smallestSize = 24
 class Ball:
     def __init__(self,pos) -> None:
         self.pos = pos
@@ -56,13 +56,14 @@ class Car:
     def __init__(self,position,rotation) -> None:
         self.pos = position
         self.rot = rotation
-        self.visionOffset = 0#tbd
-    def areaCheck(self):
-        spinDeg(1)
+        self.visionOffset = 5.5#in
+    def scan(self):
         frontCheck = distance.objectDistance(inch)
-        if(self.rotation>=-45 & self.rotation<=45) | (self.rotation<=-135&self.rotation>=135):incrament = 0
-        else:incrament = 1
+        rad = math.radians(self.rot)
+        slope = math.tan(rad)
         
+
+
         
         
         
