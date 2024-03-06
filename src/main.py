@@ -10,6 +10,7 @@
 # Library imports
 from vex import *
 import numpy as n
+import math
 
 # Brain should be defined by default
 brain=Brain()
@@ -23,27 +24,48 @@ LeftCupB = []
 RightCupB = []
 MiddleBlock = []
 brain.screen.print("Hello V5")
+def spinDeg(degrees):
+    gyro.resetRotation()
+    while(gyro.rotation(deg)<degrees):
+        LDrive.spin(forward,(gyro.rotation(deg)/degrees)*10,pct)
+        RDrive.spin(reverse,(gyro.rotation(deg)/degrees)*10,pct)
 class Circle:
-    def __init__(pos,relatives):
+    def __init__(self,pos,color) -> None:
         self.pos = pos
-        self.width = diameter
-        #the relatives don't do anything rn, but the goal is to use them to speed up the computing process in the future
-        #self.rel = relatives.push(MiddleBlock)
-    def distanceTo(obj):
+        self.col = color
+        self.width = 0 #tbd
+    def distanceTo(self,obj):
         pos1 = obj.pos
         pos2 = self.pos
         dist = math.sqrt(((pos1[0]-pos2[0])*(pos1[0]-pos2[0]))+((pos1[1]-pos2[1])*(pos1[1]-pos2[1])))
         return dist
 class Square:
-    def __init__(pos,side):
+    def __init__(self,pos,side) -> None:
         self.pos = pos
         self.greatestSize = math.sqrt(side*2)
         self.smallestSize = side
-
-LeftGoalR = Circle([x,y],[RightGoalR,LeftCupR])
-RightGoalR = Circle([x,y],[LeftGoal,RightCupR])
-RightCupR = Circle([x,y],[RightGoalR,RightCupB])
-LeftCupR = Circle([x,y],[LeftGoalR,LeftCupB])
+class Ball:
+    def __init__(self,pos) -> None:
+        self.pos = pos
+    def distanceTo(self,obj):
+        pos1 = obj.pos
+        pos2 = self.pos
+        dist = math.sqrt(((pos1[0]-pos2[0])*(pos1[0]-pos2[0]))+((pos1[1]-pos2[1])*(pos1[1]-pos2[1])))
+        return dist
+class Car:
+    def __init__(self,position,rotation) -> None:
+        self.pos = position
+        self.rot = rotation
+        self.visionOffset = 0#tbd
+    def areaCheck(self):
+        spinDeg(1)
+        frontCheck = distance.objectDistance(inch)
+        if(self.rotation>=-45 & self.rotation<=45) | (self.rotation<=-135&self.rotation>=135):incrament = 0
+        else:incrament = 1
+        
+        
+        
+        
 
 
 
