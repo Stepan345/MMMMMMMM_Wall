@@ -1,6 +1,5 @@
 import math
 import gc
-import numpy
 class Car:
     def __init__(self,position:list[int],dimentions:list[float]) -> None:
         self.pos = position
@@ -12,19 +11,38 @@ class Obsticle:
         self.pos = position
         self.width = width
         pass
-    def points(self) -> list[list[int]]:
-        contactPoints = []
-        for x in range(0,self.width+1):
-            for y in range(0,self.width+1):
-                contactPoints.append([x+self.pos[0],y+self.pos[1]])
-        return contactPoints
+    def pointsCheck(self,point:list) -> bool:
+        #contactPoints = []
+        for x in range(self.pos[0],self.pos[0]+self.width):
+            for y in range(self.pos[1],self.pos[1]+self.width):
+                if point[0] == x and point[1] == y:
+                    return True
+                #contactPoints.append([x+self.pos[0],y+self.pos[1]])
+        return False
+    
+#middle block
+box = Obsticle([10,10],4)
+#cups
+cupLB = Obsticle([7,3],2)
+cupLT = Obsticle([7,19],2)
+cupRB = Obsticle([15,3],2)
+cupRT = Obsticle([15,19],2)
+#goals, color independant
+goalLB = Obsticle([3,7],2)
+goalLT = Obsticle([3,15],2)
+goalRB = Obsticle([19,7],2)
+goalRT = Obsticle([19,15],2)
+#corners, color independant(low res)
+cornerLB = Obsticle([0,0],4)
+cornerLT = Obsticle([0,20],4)
+cornerRB = Obsticle([20,0],4)
+cornerRT = Obsticle([20,20],4)
 
-
-box = Obsticle([3,3],4)
-car = Car([4,2],[2,2])
+car = Car([0,5],[2,2])
+obsticles = [box]
 open = {}
 closed = {}
-bounds = 12
+bounds = 24
 #print(aren)
 aroundCords:list[list[int]] = []
 for w in range(-1,2):
@@ -43,11 +61,11 @@ def checkNodes(active:list[int],dest:list[int]):
         x = i[0]+active[0]
         y = i[1]+active[1]
         traversable = True
-        for obj in gc.get_objects():
-            if isinstance(obj, Obsticle) and listsMatch(aroundCords,obj.points()):
+        for obj in obsticles:
+            if obj.pointsCheck([x,y]):
                 traversable = False
-                break
-        if x < 0 or y<0 or x>bounds or y>bounds:
+                break 
+        if x < 0 or y<0 or x>=bounds or y>=bounds:
             traversable = False
         if str(x)+str(y) in closed or not traversable:
                 continue
@@ -82,6 +100,7 @@ def findPath(dest:list[int]):
         'path': 0,
         'parent': str(car.pos[0])+str(car.pos[1])
     }
+    count = 0
     while(True):
         if current['name'] in open:
             closed[current['name']] = open[current['name']]
@@ -114,9 +133,11 @@ def findPath(dest:list[int]):
             if open[i['name']]['path'] > current['path']+1:
                 open[i['name']]['path'] = current['path']+1
                 open[i['name']]['parent'] = current['name']
+        count+= 1
+        print(str(count))
     print(str(current)+'\n-------------------')
     objectFollow = current['parent']
-    finOut = [[current['parent'],current['fCost']]]
+    finOut = [[current['name'],0],[current['parent'],current['fCost']]]
     for n in range(0,current['path']-1):
         objectFollow = closed[objectFollow]['parent']
         finOut.append([closed[objectFollow]['name'],closed[objectFollow]['fCost'],])
@@ -126,6 +147,6 @@ def findPath(dest:list[int]):
 
 
 #cords start at 0
-print(findPath([10,1]))
+print(findPath([22,7]))
 #findPath([5,9])
 
