@@ -126,6 +126,6 @@ def findPath(dest:list[int]):
 
 
 #cords start at 0
-print(findPath([6,9]))
+print(findPath([10,1]))
 #findPath([5,9])
 
