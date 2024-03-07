@@ -19,27 +19,27 @@ class Obsticle:
                     return True
                 #contactPoints.append([x+self.pos[0],y+self.pos[1]])
         return False
-    
+sizeRatio = 1
 #middle block
-box = Obsticle([10,10],4)
+box = Obsticle([10*sizeRatio,10*sizeRatio],4*sizeRatio)
 #cups
-cupLB = Obsticle([7,3],2)
-cupLT = Obsticle([7,19],2)
-cupRB = Obsticle([15,3],2)
-cupRT = Obsticle([15,19],2)
+cupLB = Obsticle([7*sizeRatio,3*sizeRatio],2*sizeRatio)
+cupLT = Obsticle([7*sizeRatio,19*sizeRatio],2*sizeRatio)
+cupRB = Obsticle([15*sizeRatio,3*sizeRatio],2*sizeRatio)
+cupRT = Obsticle([15*sizeRatio,19*sizeRatio],2*sizeRatio)
 #goals, color independant
-goalLB = Obsticle([3,7],2)
-goalLT = Obsticle([3,15],2)
-goalRB = Obsticle([19,7],2)
-goalRT = Obsticle([19,15],2)
+goalLB = Obsticle([3*sizeRatio,7*sizeRatio],2*sizeRatio)
+goalLT = Obsticle([3*sizeRatio,15*sizeRatio],2*sizeRatio)
+goalRB = Obsticle([19*sizeRatio,7*sizeRatio],2*sizeRatio)
+goalRT = Obsticle([19*sizeRatio,15*sizeRatio],2*sizeRatio)
 #corners, color independant(low res)
-cornerLB = Obsticle([0,0],4)
-cornerLT = Obsticle([0,20],4)
-cornerRB = Obsticle([20,0],4)
-cornerRT = Obsticle([20,20],4)
+cornerLB = Obsticle([0*sizeRatio,0*sizeRatio],4*sizeRatio)
+cornerLT = Obsticle([0*sizeRatio,20*sizeRatio],4*sizeRatio)
+cornerRB = Obsticle([20*sizeRatio,0*sizeRatio],4*sizeRatio)
+cornerRT = Obsticle([20*sizeRatio,20*sizeRatio],4*sizeRatio)
 
 car = Car([0,5],[2,2])
-obsticles = [box]
+obsticles = [box,cupLB,cupLT,cupRB,cupRT,goalLB,goalLT,goalRB,goalRT,cornerLB,cornerLT,cornerRB,cornerRT]
 open = {}
 closed = {}
 bounds = 24
