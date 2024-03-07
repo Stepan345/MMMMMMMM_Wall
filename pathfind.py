@@ -19,7 +19,7 @@ class Obsticle:
                     return True
                 #contactPoints.append([x+self.pos[0],y+self.pos[1]])
         return False
-sizeRatio = 1
+sizeRatio = 2
 #middle block
 box = Obsticle([10*sizeRatio,10*sizeRatio],4*sizeRatio)
 #cups
@@ -38,11 +38,11 @@ cornerLT = Obsticle([0*sizeRatio,20*sizeRatio],4*sizeRatio)
 cornerRB = Obsticle([20*sizeRatio,0*sizeRatio],4*sizeRatio)
 cornerRT = Obsticle([20*sizeRatio,20*sizeRatio],4*sizeRatio)
 
-car = Car([0,5],[2,2])
+car = Car([0,10],[2,2])
 obsticles = [box,cupLB,cupLT,cupRB,cupRT,goalLB,goalLT,goalRB,goalRT,cornerLB,cornerLT,cornerRB,cornerRT]
 open = {}
 closed = {}
-bounds = 24
+bounds = 24*sizeRatio
 #print(aren)
 aroundCords:list[list[int]] = []
 for w in range(-1,2):
@@ -147,6 +147,6 @@ def findPath(dest:list[int]):
 
 
 #cords start at 0
-print(findPath([22,7]))
+print(findPath([36,40]))
 #findPath([5,9])
 
