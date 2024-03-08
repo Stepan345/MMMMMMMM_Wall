@@ -1,1 +1,43 @@
-{'31': {'pos': [3, 1], 'name': '31', 'fCost': 36, 'gCost': 14, 'hCost': 22}, '32': {'pos': [3, 2], 'name': '32', 'fCost': 24, 'gCost': 10, 'hCost': 14}, '33': {'pos': [3, 3], 'name': '33', 'fCost': 24, 'gCost': 14, 'hCost': 10}, '41': {'pos': [4, 1], 'name': '41', 'fCost': 30, 'gCost': 10, 'hCost': 20}, '43': {'pos': [4, 3], 'name': '43', 'fCost': 10, 'gCost': 10, 'hCost': 0}, '51': {'pos': [5, 1], 'name': '51', 'fCost': 36, 'gCost': 14, 'hCost': 22}, '52': {'pos': [5, 2], 'name': '52', 'fCost': 24, 'gCost': 10, 'hCost': 14}, '53': {'pos': [5, 3], 'name': '53', 'fCost': 24, 'gCost': 14, 'hCost': 10}}
+max distance -> 1x=(from:[4,0],to:[19,23])
+    10x = 24.434552669525146 seconds, count = 5943
+        sizeRatio = 10
+        startPos = [40,0]
+        endPos = [199,239]
+    9x = 16.40647292137146 seconds, count = 4751
+        sizeRatio = 9
+        startPos = [36,0]
+        endPos = [179,215]
+    8x = 11.074986934661865 seconds, count = 3817
+        sizeRatio = 8
+        startPos = [32,0]
+        endPos = [159,191]
+    7x = 6.847551345825195 seconds, count = 2927
+        sizeRatio = 7
+        startPos = [28,0]
+        endPos = [139,167]
+    6x = 4.110933542251587 seconds, count = 2161
+        sizeRatio = 6
+        startPos = [24,0]
+        endPos = [119,143]
+    5x = 2.415470600128174 seconds ,count = 1535
+        sizeRatio = 5
+        startPos = [20,0]
+        endPos = [99,119]
+    4x = 1.3198051452636719 seconds ,count = 1029
+        sizeRatio = 4
+        startPos = [16,0]
+        endPos = [79,95]
+    3x = 0.6061279773712158 seconds, count = 567
+        sizeRatio = 3
+        startPos = [12,0]
+        endPos = [59,71]
+    2x = 0.28606104850769043 seconds, count = 274
+        sizeRatio = 2
+        startPos = [8,0]
+        endPos = [39,47]
+    1x = 0.05701327323913574 seconds, count = 73
+        sizeRatio = 1
+        startPos = [4,0]
+        endPos = [19,23]
+
+    

@@ -1,5 +1,6 @@
 import math
 import gc
+import time
 class Car:
     def __init__(self,position:list[int],dimentions:list[float]) -> None:
         self.pos = position
@@ -19,7 +20,13 @@ class Obsticle:
                     return True
                 #contactPoints.append([x+self.pos[0],y+self.pos[1]])
         return False
-sizeRatio = 2
+
+
+sizeRatio = 9
+startPos = [36,0]
+endPos = [179,215]
+
+
 #middle block
 box = Obsticle([10*sizeRatio,10*sizeRatio],4*sizeRatio)
 #cups
@@ -38,7 +45,7 @@ cornerLT = Obsticle([0*sizeRatio,20*sizeRatio],4*sizeRatio)
 cornerRB = Obsticle([20*sizeRatio,0*sizeRatio],4*sizeRatio)
 cornerRT = Obsticle([20*sizeRatio,20*sizeRatio],4*sizeRatio)
 
-car = Car([0,10],[2,2])
+car = Car(startPos,[2,2])
 obsticles = [box,cupLB,cupLT,cupRB,cupRT,goalLB,goalLT,goalRB,goalRT,cornerLB,cornerLT,cornerRB,cornerRT]
 open = {}
 closed = {}
@@ -67,14 +74,14 @@ def checkNodes(active:list[int],dest:list[int]):
                 break 
         if x < 0 or y<0 or x>=bounds or y>=bounds:
             traversable = False
-        if str(x)+str(y) in closed or not traversable:
+        if str(x)+','+str(y) in closed or not traversable:
                 continue
         gCost = math.floor(math.sqrt(pow((x)-car.pos[0],2)+pow((y)-car.pos[1],2))*10)
         hCost = math.floor(math.sqrt(pow((x)-dest[0],2)+pow((y)-dest[1],2))*10)
         fCost = hCost + gCost
-        neighbours[str(x)+str(y)] = {
+        neighbours[str(x)+','+str(y)] = {
             'pos':[x,y],
-            'name': str(x)+str(y),
+            'name': str(x)+','+str(y),
             'fCost': fCost,
             'gCost': gCost,
             'hCost': hCost
@@ -89,11 +96,11 @@ def findPath(dest:list[int]):
         'gCost':1000,
         'hCost':1000,
         'path':0,
-        'parent': str(car.pos[0])+str(car.pos[1])
+        'parent': str(car.pos[0])+','+str(car.pos[1])
     }
-    open[str(car.pos[0])+str(car.pos[1])] = {
+    open[str(car.pos[0])+','+str(car.pos[1])] = {
         'pos':car.pos,
-        'name':str(car.pos[0])+str(car.pos[1]),
+        'name':str(car.pos[0])+','+str(car.pos[1]),
         'fCost':0,
         'gCost':0,
         'hCost':0,
@@ -135,6 +142,9 @@ def findPath(dest:list[int]):
                 open[i['name']]['parent'] = current['name']
         count+= 1
         print(str(count))
+        if(count >= 7000): 
+            print("end or start position imposible")
+            break
     print(str(current)+'\n-------------------')
     objectFollow = current['parent']
     finOut = [[current['name'],0],[current['parent'],current['fCost']]]
@@ -145,8 +155,7 @@ def findPath(dest:list[int]):
 
 
 
-
-#cords start at 0
-print(findPath([36,40]))
-#findPath([5,9])
-
+startTime = time.time()
+print(findPath(endPos))
+endTime = time.time()
+print('Operating time:' + str(endTime-startTime)+ ' seconds')
